@@ -2,7 +2,7 @@
  var seconds = 00;
  var tens = 00;
 
-//  we assign a value and buttons to start, stop and reset.
+//  we assign getElementByID's to buttons to start, stop and reset.
 
 var OutputMinutes = document.getElementById('minutes');
  var OutputSeconds = document.getElementById('second');
@@ -16,13 +16,17 @@ var OutputMinutes = document.getElementById('minutes');
 
 buttonStart.addEventListener('click', () => {
   clearInterval(Interval);
+//   we give 10 milliseconds = 0.01 seconds
   Interval = setInterval(startTime, 10);
 });
 
+
+// this is stop button
 buttonStop.addEventListener('click', () => {
     clearInterval(Interval);
 });
 
+// this is the reset button
 buttonReset.addEventListener('click', () => {
     clearInterval(Interval);
     minutes = "00";
@@ -33,6 +37,7 @@ buttonReset.addEventListener('click', () => {
     OutputTens.innerHTML = tens;
 });
 
+// star time function executes if start is pushed 
 function startTime(){
     tens++;
     if(tens <= 9){
@@ -43,6 +48,8 @@ function startTime(){
         OutputTens.innerHTML = tens;
     }
 
+
+    // if milliseconds greater than 99 seconds should increase by one 
     if(tens > 99){
         seconds++;
         OutputSeconds.innerHTML = "0" + seconds;
@@ -54,6 +61,8 @@ function startTime(){
         OutputSeconds.innerHTML = seconds;
     }
 
+
+    // if seconds are greater than 59 minutes should increase by one
     if(seconds > 59){
         minutes++;
         OutputMinutes.innerHTML = "0" + minutes;
